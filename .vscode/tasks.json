@@ -1,0 +1,76 @@
+{
+  "tasks": [
+    {
+      "label": "Create lib project folder",
+      "group": "none",
+      "type": "shell",
+      "command": "mkdir -p ${input:libs-folder}${input:company}/${input:project}",
+      "windows": {
+        "command": "if not exist \"${input:libs-folder}${input:company\\${input:project}\" mkdir \"${input:libs-folder}${input:company}\\${input:project}\""
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Create test project folder",
+      "group": "none",
+      "type": "shell",
+      "command": "mkdir -p ${input:tests-folder}${input:company}/${input:project}",
+      "windows": {
+        "command": "if not exist \"${input:tests-folder}${input:company\\${input:project}\" mkdir \"${input:tests-folder}${input:company}\\${input:project}\""
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Create new class",
+      "group": "none",
+      "type": "shell",
+      "command": "echo kw-ruby-create-class > ${input:libs-folder}${input:company}/${input:project}/${input:filename}.rb",
+      "windows": {
+        "command": "echo kw-ruby-create-class > ${input:libs-folder}\\${input:company}\\${input:project}\\${input:filename}.rb"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Create new test",
+      "group": "none",
+      "type": "shell",
+      "command": "echo kw-ruby-create-test > ${input:tests-folder}${input:company}/${input:project}/test_${input:filename}.rb",
+      "windows": {
+        "command": "echo kw-ruby-create-test > ${input:tests-folder}\\${input:company}\\${input:project}\\test_${input:filename}.rb"
+      },
+      "problemMatcher": []
+    }
+  ],
+    "inputs": [
+        {
+            "id": "libs-folder",
+            "description": "The relative path, where the class should be created",
+            "type": "promptString",
+            "default": "lib/jekyll/"
+        },
+        {
+            "id": "tests-folder",
+            "description": "The relative path, where the test should be created",
+            "type": "promptString",
+            "default": "test/jekyll/"
+        },
+        {
+            "id": "company",
+            "description": "The folder name of the company",
+            "type": "promptString",
+            "default": "KargWare"
+        },
+        {
+            "id": "project",
+            "description": "The folder name of the project",
+            "type": "promptString",
+            "default": "MyRubyGemForJekyll"
+        },
+        {
+            "id": "filename",
+            "description": "The name of the class or the test (please ommit the 'test_' prefix)",
+            "type": "promptString",
+            "default": "MyClass"
+        }
+    ]
+  }

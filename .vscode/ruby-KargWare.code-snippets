@@ -1,0 +1,59 @@
+{
+    "Create ruby Version File":{
+		"prefix": "kw-ruby-create-versionfile",
+        "scope": "ruby",
+		"body": [
+            "# frozen_string_literal: true",
+            "",
+            "module Jekyll",
+            "  module ${1:KargWare}",   
+            "    module ${TM_DIRECTORY/^.+\\/(.*)$/$1/}",
+            "      VERSION = '0.1.0'",
+            "    end",
+            "  end",
+            "end"
+		],
+		"description": "Create a version file for a rubygem"
+	},
+    "Create a ruby class":{
+		"prefix": "kw-ruby-create-class",
+		"scope": "ruby",
+		"body": [
+            "# frozen_string_literal: true",
+            "",
+            "module Jekyll",
+            "  module ${1:KargWare}",
+            "    module ${TM_DIRECTORY/^.+\\/(.*)$/$1/}",
+            "      class ${TM_FILENAME_BASE}",
+            "      end",
+            "    end",
+            "  end",
+            "end",
+            ""
+		],
+		"description": "Create a class for a rubygem"
+	},
+    "Create a ruby test class based on minitest":{
+		"prefix": "kw-ruby-create-test",
+		"scope": "ruby",
+		"body": [
+            "# frozen_string_literal: true",
+            "",
+            "require 'test_helper'",
+            "",
+            "module Jekyll",
+            "  module ${1:KargWare}",
+            "    module ${TM_DIRECTORY/^.+\\/(.*)$/$1/}",
+            "      class ${TM_FILENAME_BASE} < Minitest::Test",
+            "        def test_fail_always",
+            "          assert false",
+            "        end",
+            "      end",
+            "    end",
+            "  end",
+            "end",
+            ""
+		],
+		"description": "Create a ruby test class based on minitest"
+	}
+}
