@@ -5,22 +5,20 @@ module Jekyll
     module Shorten
       # Shorten configuration class
       class Configuration
-        attr_accessor :my_integer, :my_float, :my_boolean, :my_string
+        attr_accessor :shorten_gt3_digit, :shorten_gt6_digit, :shorten_gt9_digit
 
         DEFAULT_CONFIG = {
-          'my_integer' => 1,
-          'my_float' => 2.4,
-          'my_boolean' => true,
-          'my_string' => 'foo bar'
+          'shorten_gt3_digit' => ' K',
+          'shorten_gt6_digit' => ' M',
+          'shorten_gt9_digit' => ' B'
         }.freeze
 
         def initialize(options)
           options = generate_option_hash(options)
 
-          @my_integer = options['my_integer']
-          @my_float = options['my_float']
-          @my_boolean = options['my_boolean']
-          @my_string = options['my_string']
+          @shorten_gt3_digit = options['shorten_gt3_digit']
+          @shorten_gt6_digit = options['shorten_gt6_digit']
+          @shorten_gt9_digit = options['shorten_gt9_digit']
         end
 
         private
