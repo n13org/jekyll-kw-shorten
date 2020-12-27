@@ -11,9 +11,21 @@ module Jekyll
 
       # shorten tag {% shorten input %} for Jekyll
       class ShortenTag < Liquid::Tag
+
+        class << self
+          def tag_name
+            name.split("::").last.downcase
+          end
+        end
+
         def initialize(tag_name, input, tokens)
           super
           @input = input
+
+          # raise ArgumentError, <<~MSG
+          #   Could not use '#{input}' in tag '#{self.class.tag_name}'.
+          #   Make sure it is a string or a number.
+          # MSG
         end
 
         def render(context)
@@ -24,7 +36,11 @@ module Jekyll
         private
 
         def get_plugin_config(context)
-          context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME] || {}
+          if defined? context.registers[:site].config
+            context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME] || {}
+          else
+            {}
+          end
         end
       end
 
@@ -38,7 +54,11 @@ module Jekyll
         private
 
         def get_plugin_config
-          @context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME] || {}
+          if defined? @context.registers[:site].config
+            @context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME] || {}
+          else
+            {}
+          end
         end
       end
 
