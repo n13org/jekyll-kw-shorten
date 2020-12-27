@@ -10,6 +10,17 @@
     ]
   },
   "settings": {
+    "ruby.pathToBundler": "bundle",
+    "rubyTestExplorer.debuggerHost":"127.0.0.1",
+    "rubyTestExplorer.debuggerPort":"1234",
+    "rubyTestExplorer.testFramework": "minitest",
+    "rubyTestExplorer.filePattern": [
+      "*_test.rb",
+      "test_*.rb",
+      "*_spec.rb"
+    ],
+    "rubyTestExplorer.minitestCommand": "bundle exec rake",
+    "rubyTestExplorer.minitestDirectory": "./test/",
     "cSpell.ignorePaths": [
       "**/**.code-workspace",
       "**/Gemfile",
