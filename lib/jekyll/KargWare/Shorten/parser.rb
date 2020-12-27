@@ -13,7 +13,7 @@ module Jekyll
           @configuration = Jekyll::KargWare::Shorten::Configuration.new(options)
         end
 
-        def shorten(text)
+        def parse(text)
           if text.is_a? String then
             return text
           else
