@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'jekyll/KargWare/Shorten/parser'
+require 'jekyll/KargWare/Shorten/version'
 
 module Jekyll
   module KargWare
@@ -10,29 +11,34 @@ module Jekyll
 
       # shorten tag {% shorten input %} for Jekyll
       class ShortenTag < Liquid::Tag
-        include Jekyll::KargWare::Shorten::ShortenFilter
-
         def initialize(tag_name, input, tokens)
           super
           @input = input
         end
 
         def render(context)
-          shorten(@input)
+          parser = Jekyll::KargWare::Shorten::Parser.new(get_plugin_config(context))
+          parser.parse(@input)
+        end
+
+        private
+
+        def get_plugin_config(context)
+          context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME] || {}
         end
       end
 
       # shorten filter {{ number | shorten }} for Jekyll
       module ShortenFilter
         def shorten(number)
-          parser = Jekyll::KargWare::Shorten::Parser.new(get_site_config)
-          parser.shorten(number)
+          parser = Jekyll::KargWare::Shorten::Parser.new(get_plugin_config)
+          parser.parse(number)
         end
 
         private
 
-        def get_site_config
-          @context.registers[:site].config['jekyll-kw-shorten'] || {}
+        def get_plugin_config
+          @context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME] || {}
         end
       end
 
