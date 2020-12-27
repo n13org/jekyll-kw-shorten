@@ -8,7 +8,7 @@ module Jekyll
         attr_reader :configuration
 
         def initialize(options = {})
-          @configuration = Configuration.new(options)
+          @configuration = Jekyll::KargWare::Shorten::Configuration.new(options)
         end
 
         def shorten(text)
