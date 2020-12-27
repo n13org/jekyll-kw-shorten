@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'jekyll/KargWare/Shorten/configuration'
+
 module Jekyll
   module KargWare
     module Shorten
