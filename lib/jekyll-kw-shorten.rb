@@ -16,8 +16,7 @@ module Jekyll
         end
 
         def render(context)
-          filter = Jekyll::KargWare::Shorten::ShortenFilter.new
-          filter.shorten(@input)
+          ShortenFilter.shorten(@input)
         end
       end
 
