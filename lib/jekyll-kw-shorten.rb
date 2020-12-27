@@ -10,13 +10,15 @@ module Jekyll
 
       # shorten tag {% shorten input %} for Jekyll
       class ShortenTag < Liquid::Tag
+        include Jekyll::KargWare::Shorten::ShortenFilter
+
         def initialize(tag_name, input, tokens)
           super
           @input = input
         end
 
         def render(context)
-          ShortenFilter.shorten(@input)
+          shorten(@input)
         end
       end
 
