@@ -5,7 +5,7 @@ module Jekyll
     module Shorten
       # Shorten configuration class
       class Configuration
-        attr_accessor :shorten_gt3_digit, :shorten_gt6_digit, :shorten_gt9_digit
+        attr_reader :shorten_gt3_digit, :shorten_gt6_digit, :shorten_gt9_digit
 
         DEFAULT_CONFIG = {
           'shorten_gt3_digit' => ' K',
