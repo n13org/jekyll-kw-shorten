@@ -14,22 +14,32 @@ module Jekyll
         end
 
         def parse(text)
-          if text.is_a? String then
-            return text
-          else
-            num = text.to_i
+          if Parser.is_number?(text) then
+            num = text.to_f
             if num >= 1000000000000 then
               return "∞ 🚀"
             elsif num >= 1000000000 then
-              return (num / 1000000000.0).truncate(1).to_s + @configuration.shorten_gt9_digit
+              return format(num / 1000000000.0) + @configuration.shorten_gt9_digit
             elsif num >= 1000000 then
-              return (num / 1000000.0).truncate(1).to_s + @configuration.shorten_gt6_digit
+              return format(num / 1000000.0) + @configuration.shorten_gt6_digit
             elsif num >= 1000 then
-              return (num / 1000.0).truncate(1).to_s + @configuration.shorten_gt3_digit
+              return format(num / 1000.0) + @configuration.shorten_gt3_digit
             else
-              return (num).truncate(1).to_s
+              return format(num)
             end
+          else
+            return text
           end
+        end
+
+        # private
+
+        def format(num)
+          num.round(1).truncate(1).to_s
+        end
+
+        def self.is_number? string
+          true if Float(string) rescue false
         end
 
       end
