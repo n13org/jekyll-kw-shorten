@@ -17,6 +17,32 @@ module Jekyll
           @stubbed_context_page = Struct.new(:content)
         end
 
+        def test_plugin_config
+          default_plugin_config = {
+            Jekyll::KargWare::Shorten::RUBYGEM_NAME => {
+              "shorten_gt3_digit"       => " aA",
+              "shorten_gt6_digit"       => " bB",
+              "shorten_gt9_digit"       => " cC",
+            }
+          }
+
+          context = @stubbed_context.new(
+            site: @stubbed_context_site.new(default_plugin_config)
+          )
+
+          assert_equal " aA", context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]["shorten_gt3_digit"]
+          assert_equal " bB", context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]["shorten_gt6_digit"]
+          assert_equal " cC", context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]["shorten_gt9_digit"]
+
+          tag = Jekyll::KargWare::Shorten::ShortenTag.parse(
+            'shorten',
+            1499,
+            Liquid::Tokenizer.new(''),
+            Liquid::ParseContext.new
+          )
+          assert_equal('1.5 aA', tag.render(context))
+        end
+
         def test_page_content
           context = @stubbed_context.new(
             page: @stubbed_context_page.new('foo bar')
@@ -80,7 +106,7 @@ module Jekyll
           )
           tag = Jekyll::KargWare::Shorten::ShortenTag.parse(
             'shorten',
-            1000,
+            '1000',
             Liquid::Tokenizer.new(''),
             Liquid::ParseContext.new
           )
@@ -141,6 +167,37 @@ module Jekyll
             Liquid::ParseContext.new
           )
           assert_equal('1.0 K', tag.render(context))
+        end
+
+        def test_tag
+          # https://github.com/jekyll/jekyll/blob/master/test/test_liquid_extensions.rb
+
+          default_plugin_config = {
+            Jekyll::KargWare::Shorten::RUBYGEM_NAME => {
+              "shorten_gt3_digit" => " aAa",
+              "shorten_gt6_digit" => " bBb",
+              "shorten_gt9_digit" => " cCc",
+            }
+          }
+
+          context = @stubbed_context.new(
+            site: @stubbed_context_site.new(default_plugin_config)
+          )
+
+          assert_equal " aAa", context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]["shorten_gt3_digit"]
+          assert_equal " bBb", context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]["shorten_gt6_digit"]
+          assert_equal " cCc", context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]["shorten_gt9_digit"]
+
+          Liquid::Template.register_tag("shortenfortest", Jekyll::KargWare::Shorten::ShortenTag)
+          template_gt3 = Liquid::Template.parse("{% shortenfortest 1234 %}")
+          template_gt6 = Liquid::Template.parse("{% shortenfortest 1999999 %}")
+          template_gt9 = Liquid::Template.parse("{% shortenfortest 1590000000 %}")
+
+          liquid_context = Liquid::Context.new({}, {}, context.registers)
+
+          assert_equal "1.2 aAa", template_gt3.render(liquid_context)
+          assert_equal "2.0 bBb", template_gt6.render(liquid_context)
+          assert_equal "1.6 cCc", template_gt9.render(liquid_context)
         end
 
       end
