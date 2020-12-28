@@ -20,7 +20,7 @@ module Jekyll
 
         def initialize(tag_name, input, tokens)
           super
-          @input = input
+          @input = input.to_s.strip
 
           # raise ArgumentError, <<~MSG
           #   Could not use '#{input}' in tag '#{self.class.tag_name}'.
@@ -30,6 +30,7 @@ module Jekyll
 
         def render(context)
           parser = Jekyll::KargWare::Shorten::Parser.new(get_plugin_config(context))
+          # parser = Jekyll::KargWare::Shorten::Parser.new({})
           parser.parse(@input)
         end
 
