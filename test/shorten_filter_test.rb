@@ -16,7 +16,7 @@ module Jekyll
 
           assert_equal "FooBar", shorten("FooBar")
 
-          assert_equal "1", shorten(1)
+          assert_equal "    1", shorten(1)
           assert_equal "1.0 K", shorten(1000)
           assert_equal "1.0 M", shorten(1000000)
           assert_equal "1.0 B", shorten(1000000000)

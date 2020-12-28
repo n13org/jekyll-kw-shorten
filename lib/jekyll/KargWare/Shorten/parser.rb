@@ -25,7 +25,7 @@ module Jekyll
             elsif num >= 1000 then
               return format(num / 1000.0) + @configuration.shorten_gt3_digit
             else
-              return format(num)
+              return num.round(0).truncate(0).to_s.rjust(5)
             end
           else
             return text
