@@ -9,6 +9,16 @@ module Jekyll
       class Error < StandardError; end
       class Exception < Gem::Exception; end
 
+      module_function :get_plugin_config
+
+      def get_plugin_config(context)
+        if defined? context.registers[:site].config
+          context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME] || {}
+        else
+          {}
+        end
+      end
+
       # shorten tag {% shorten input %} for Jekyll
       class ShortenTag < Liquid::Tag
 
@@ -29,37 +39,20 @@ module Jekyll
         end
 
         def render(context)
-          parser = Jekyll::KargWare::Shorten::Parser.new(get_plugin_config(context))
-          # parser = Jekyll::KargWare::Shorten::Parser.new({})
+          parser = Jekyll::KargWare::Shorten::Parser.new(
+            Jekyll::KargWare::Shorten.get_plugin_config(context)
+          )
           parser.parse(@input)
-        end
-
-        private
-
-        def get_plugin_config(context)
-          if defined? context.registers[:site].config
-            context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME] || {}
-          else
-            {}
-          end
         end
       end
 
       # shorten filter {{ number | shorten }} for Jekyll
       module ShortenFilter
         def shorten(number)
-          parser = Jekyll::KargWare::Shorten::Parser.new(get_plugin_config)
+          parser = Jekyll::KargWare::Shorten::Parser.new(
+            Jekyll::KargWare::Shorten.get_plugin_config(@context)
+          )
           parser.parse(number)
-        end
-
-        private
-
-        def get_plugin_config
-          if defined? @context.registers[:site].config
-            @context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME] || {}
-          else
-            {}
-          end
         end
       end
 
