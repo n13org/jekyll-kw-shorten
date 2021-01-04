@@ -36,7 +36,9 @@
     "cSpell.words": [
       "Huuums",
       "Karg",
-      "KargWare"
+      "KargWare",
+      "Rakefile",
+      "Struct"
     ],
     "[ruby]": {
       "editor.tabSize": 2,
