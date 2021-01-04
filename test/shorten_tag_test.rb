@@ -12,7 +12,7 @@ module Jekyll
         include Liquid
 
         def setup
-          @stubbed_context  = Struct.new(:registers)
+          @stubbed_context = Struct.new(:registers)
           @stubbed_context_site = Struct.new(:config)
           @stubbed_context_page = Struct.new(:content)
         end
@@ -20,9 +20,9 @@ module Jekyll
         def test_plugin_config
           default_plugin_config = {
             Jekyll::KargWare::Shorten::RUBYGEM_NAME => {
-              "shorten_gt3_digit"       => " aA",
-              "shorten_gt6_digit"       => " bB",
-              "shorten_gt9_digit"       => " cC",
+              'shorten_gt3_digit' => ' aA',
+              'shorten_gt6_digit' => ' bB',
+              'shorten_gt9_digit' => ' cC'
             }
           }
 
@@ -30,9 +30,9 @@ module Jekyll
             site: @stubbed_context_site.new(default_plugin_config)
           )
 
-          assert_equal " aA", context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]["shorten_gt3_digit"]
-          assert_equal " bB", context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]["shorten_gt6_digit"]
-          assert_equal " cC", context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]["shorten_gt9_digit"]
+          assert_equal ' aA', context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]['shorten_gt3_digit']
+          assert_equal ' bB', context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]['shorten_gt6_digit']
+          assert_equal ' cC', context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]['shorten_gt9_digit']
 
           tag = Jekyll::KargWare::Shorten::ShortenTag.parse(
             'shorten',
@@ -54,21 +54,21 @@ module Jekyll
           context = @stubbed_context.new(
             site: @stubbed_context_site.new(Jekyll::KargWare::Shorten::RUBYGEM_NAME => 'foo')
           )
-          assert_equal "foo", context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]
+          assert_equal 'foo', context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]
         end
 
         def test_config_plugin_hashtable
           @stubbed_context_config = Struct.new(:gt3, :gt6, :gt9)
-          config_struct = @stubbed_context_config.new("x", "XX", "xXx")
+          config_struct = @stubbed_context_config.new('x', 'XX', 'xXx')
 
           context = @stubbed_context.new(
             site: @stubbed_context_site.new(
-              "MyConfig" => config_struct
+              'MyConfig' => config_struct
             )
           )
-          assert_equal "x", context.registers[:site].config["MyConfig"]["gt3"]
-          assert_equal "XX", context.registers[:site].config["MyConfig"]["gt6"]
-          assert_equal "xXx", context.registers[:site].config["MyConfig"]["gt9"]
+          assert_equal 'x', context.registers[:site].config['MyConfig']['gt3']
+          assert_equal 'XX', context.registers[:site].config['MyConfig']['gt6']
+          assert_equal 'xXx', context.registers[:site].config['MyConfig']['gt9']
         end
 
         # def test_config_plugin_array
@@ -149,16 +149,16 @@ module Jekyll
 
         def test_config_MyPlugin_hashtable
           @stubbed_context_config = Struct.new(:shorten_gt3_digit, :shorten_gt6_digit, :shorten_gt9_digit)
-          config_struct = @stubbed_context_config.new(" A", " B", " C")
+          config_struct = @stubbed_context_config.new(' A', ' B', ' C')
 
           context = @stubbed_context.new(
             site: @stubbed_context_site.new(
               Jekyll::KargWare::Shorten::RUBYGEM_NAME => config_struct
             )
           )
-          assert_equal " A", context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]["shorten_gt3_digit"]
-          assert_equal " B", context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]["shorten_gt6_digit"]
-          assert_equal " C", context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]["shorten_gt9_digit"]
+          assert_equal ' A', context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]['shorten_gt3_digit']
+          assert_equal ' B', context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]['shorten_gt6_digit']
+          assert_equal ' C', context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]['shorten_gt9_digit']
 
           tag = Jekyll::KargWare::Shorten::ShortenTag.parse(
             'shorten',
@@ -174,9 +174,9 @@ module Jekyll
 
           default_plugin_config = {
             Jekyll::KargWare::Shorten::RUBYGEM_NAME => {
-              "shorten_gt3_digit" => " aAa",
-              "shorten_gt6_digit" => " bBb",
-              "shorten_gt9_digit" => " cCc",
+              'shorten_gt3_digit' => ' aAa',
+              'shorten_gt6_digit' => ' bBb',
+              'shorten_gt9_digit' => ' cCc'
             }
           }
 
@@ -184,20 +184,20 @@ module Jekyll
             site: @stubbed_context_site.new(default_plugin_config)
           )
 
-          assert_equal " aAa", context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]["shorten_gt3_digit"]
-          assert_equal " bBb", context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]["shorten_gt6_digit"]
-          assert_equal " cCc", context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]["shorten_gt9_digit"]
+          assert_equal ' aAa', context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]['shorten_gt3_digit']
+          assert_equal ' bBb', context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]['shorten_gt6_digit']
+          assert_equal ' cCc', context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME]['shorten_gt9_digit']
 
-          Liquid::Template.register_tag("shortenfortest", Jekyll::KargWare::Shorten::ShortenTag)
-          template_gt3 = Liquid::Template.parse("{% shortenfortest 1234 %}")
-          template_gt6 = Liquid::Template.parse("{% shortenfortest 1999999 %}")
-          template_gt9 = Liquid::Template.parse("{% shortenfortest 1590000000 %}")
+          Liquid::Template.register_tag('shortenfortest', Jekyll::KargWare::Shorten::ShortenTag)
+          template_gt3 = Liquid::Template.parse('{% shortenfortest 1234 %}')
+          template_gt6 = Liquid::Template.parse('{% shortenfortest 1999999 %}')
+          template_gt9 = Liquid::Template.parse('{% shortenfortest 1590000000 %}')
 
           liquid_context = Liquid::Context.new({}, {}, context.registers)
 
-          assert_equal "1.2 aAa", template_gt3.render(liquid_context)
-          assert_equal "2.0 bBb", template_gt6.render(liquid_context)
-          assert_equal "1.6 cCc", template_gt9.render(liquid_context)
+          assert_equal '1.2 aAa', template_gt3.render(liquid_context)
+          assert_equal '2.0 bBb', template_gt6.render(liquid_context)
+          assert_equal '1.6 cCc', template_gt9.render(liquid_context)
         end
       end
     end

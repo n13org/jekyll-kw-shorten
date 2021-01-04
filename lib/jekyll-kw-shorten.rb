@@ -43,7 +43,6 @@ module Jekyll
           parser.parse(number)
         end
       end
-
     end
   end
 end

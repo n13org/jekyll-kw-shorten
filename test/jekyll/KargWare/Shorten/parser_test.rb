@@ -10,16 +10,16 @@ module Jekyll
         def test_is_number_positive
           assert_equal true, Parser.is_number?(1.23)
           assert_equal true, Parser.is_number?(123)
-          assert_equal true, Parser.is_number?("123")
-          assert_equal true, Parser.is_number?("123.45")
+          assert_equal true, Parser.is_number?('123')
+          assert_equal true, Parser.is_number?('123.45')
           assert_equal true, Parser.is_number?(2 + 4)
           assert_equal true, Parser.is_number?(123123123123123123123123123)
           assert_equal true, Parser.is_number?(123762987.45)
         end
 
         def test_is_number_negative
-          assert_equal false, Parser.is_number?("NoNumber")
-          assert_equal false, Parser.is_number?("FooBar")
+          assert_equal false, Parser.is_number?('NoNumber')
+          assert_equal false, Parser.is_number?('FooBar')
         end
 
         def test_parse_plain_strings
