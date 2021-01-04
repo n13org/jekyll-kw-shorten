@@ -32,6 +32,8 @@ Metrics/ClassLength:
 Naming/FileName:
   Enabled: false
 
+Style/AccessModifierDeclarations: 
+  EnforcedStyle: inline
 Style/ExponentialNotation:
   Enabled: true
 Style/HashEachMethods:

@@ -9,9 +9,7 @@ module Jekyll
       class Error < StandardError; end
       class Exception < Gem::Exception; end
 
-      module_function :get_plugin_config
-
-      def get_plugin_config(context)
+      module_function def get_plugin_config(context)
         if defined? context.registers[:site].config
           context.registers[:site].config[Jekyll::KargWare::Shorten::RUBYGEM_NAME] || {}
         else
