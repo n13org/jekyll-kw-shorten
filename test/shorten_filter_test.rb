@@ -27,11 +27,13 @@ module Jekyll
         def get_context
           Struct.new(:registers).new(
             site: Struct.new(:config).new(
-              {Jekyll::KargWare::Shorten::RUBYGEM_NAME => Array({
-                :shorten_gt3_digit => 'a',
-                :shorten_gt6_digit => 'b',
-                :shorten_gt9_digit => 'c',
-              })}
+              {
+                Jekyll::KargWare::Shorten::RUBYGEM_NAME => Array({
+                  shorten_gt3_digit: 'a',
+                  shorten_gt6_digit: 'b',
+                  shorten_gt9_digit: 'c'
+                })
+              }
             )
           )
 
