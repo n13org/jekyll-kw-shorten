@@ -21,6 +21,7 @@
     ],
     "rubyTestExplorer.minitestCommand": "bundle exec rake",
     "rubyTestExplorer.minitestDirectory": "./test/",
+    "rubyTestExplorer.rspecDirectory": "./spec/",
     "cSpell.ignorePaths": [
       "**/**.code-workspace",
       "**/Gemfile",
