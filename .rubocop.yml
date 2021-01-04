@@ -29,8 +29,6 @@ Metrics/AbcSize:
 Metrics/ClassLength:
   Enabled: false
 Metrics/BlockLength:
-  Exclude:
-    - 'spec/**/*.rb'
   ExcludedMethods: ['describe', 'context']
 
 Naming/FileName:
@@ -46,5 +44,7 @@ Style/HashTransformKeys:
   Enabled: true
 Style/HashTransformValues:
   Enabled: true
+Style/NumericLiterals:
+  Enabled: false
 Style/WordArray:
   Enabled: false
