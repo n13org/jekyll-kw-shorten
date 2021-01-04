@@ -21,9 +21,7 @@ module Jekyll
           @shorten_gt9_digit = options['shorten_gt9_digit']
         end
 
-        private
-
-        def generate_option_hash(options)
+        private def generate_option_hash(options)
           DEFAULT_CONFIG.merge(options)
         rescue TypeError
           DEFAULT_CONFIG
