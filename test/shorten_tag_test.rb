@@ -147,7 +147,7 @@ module Jekyll
           # assert_equal('1.0 K', parser.parse(1000))
         end
 
-        def test_config_MyPlugin_hashtable
+        def test_config_myplugin_hashtable
           @stubbed_context_config = Struct.new(:shorten_gt3_digit, :shorten_gt6_digit, :shorten_gt9_digit)
           config_struct = @stubbed_context_config.new(' A', ' B', ' C')
 

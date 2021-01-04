@@ -5,6 +5,7 @@ require 'jekyll/KargWare/Shorten/version'
 
 module Jekyll
   module KargWare
+    # jekyll-kw-shorten jekyll (tag and filter) class
     module Shorten
       class Error < StandardError; end
       class Exception < Gem::Exception; end

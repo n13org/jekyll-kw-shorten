@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TestConfiguration < JekyllUnitTest
   context '#validate' do
     setup do

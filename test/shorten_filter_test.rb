@@ -12,7 +12,7 @@ module Jekyll
         include Jekyll::KargWare::Shorten::ShortenFilter
 
         def test_default_filter
-          @context = get_context
+          @context = create_context
 
           assert_equal 'FooBar', shorten('FooBar')
 
@@ -22,24 +22,20 @@ module Jekyll
           assert_equal '1.0 B', shorten(1000000000)
         end
 
-        private
-
-        def get_context
+        private def create_context
           Struct.new(:registers).new(
             site: Struct.new(:config).new(
               {
-                Jekyll::KargWare::Shorten::RUBYGEM_NAME => Array({
-                  shorten_gt3_digit: 'a',
-                  shorten_gt6_digit: 'b',
-                  shorten_gt9_digit: 'c'
-                })
+                Jekyll::KargWare::Shorten::RUBYGEM_NAME => Array(
+                  {
+                    shorten_gt3_digit: 'a',
+                    shorten_gt6_digit: 'b',
+                    shorten_gt9_digit: 'c'
+                  }
+                )
               }
             )
           )
-
-          # Struct.new(:registers).new(
-          #   site: Struct.new(:config)
-          # )
         end
       end
     end
