@@ -21,21 +21,9 @@ module Jekyll
 
       # shorten tag {% shorten input %} for Jekyll
       class ShortenTag < Liquid::Tag
-
-        class << self
-          def tag_name
-            name.split("::").last.downcase
-          end
-        end
-
         def initialize(tag_name, input, tokens)
           super
           @input = input.to_s.strip
-
-          # raise ArgumentError, <<~MSG
-          #   Could not use '#{input}' in tag '#{self.class.tag_name}'.
-          #   Make sure it is a string or a number.
-          # MSG
         end
 
         def render(context)

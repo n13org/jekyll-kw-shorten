@@ -199,7 +199,6 @@ module Jekyll
           assert_equal "2.0 bBb", template_gt6.render(liquid_context)
           assert_equal "1.6 cCc", template_gt9.render(liquid_context)
         end
-
       end
     end
   end
