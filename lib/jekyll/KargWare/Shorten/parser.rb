@@ -16,17 +16,22 @@ module Jekyll
         def parse(text)
           return text unless Parser.number?(text)
 
-          num = text.to_f
-          if num >= 1000000000000
-            '∞ 🚀'
-          elsif num >= 1000000000
-            format(num / 1000000000.0) + @configuration.shorten_gt9_digit
-          elsif num >= 1000000
-            format(num / 1000000.0) + @configuration.shorten_gt6_digit
-          elsif num >= 1000
-            format(num / 1000.0) + @configuration.shorten_gt3_digit
-          else
-            num.round(0).truncate(0).to_s.rjust(5)
+          begin
+            num = text.to_f
+            if num >= 1000000000000
+              '∞ 🚀'
+            elsif num >= 1000000000
+              format(num / 1000000000.0) + @configuration.shorten_gt9_digit
+            elsif num >= 1000000
+              format(num / 1000000.0) + @configuration.shorten_gt6_digit
+            elsif num >= 1000
+              format(num / 1000.0) + @configuration.shorten_gt3_digit
+            else
+              num.round(0).truncate(0).to_s.rjust(5)
+            end
+          rescue StandardError => e
+            puts e.message
+            text
           end
         end
 
