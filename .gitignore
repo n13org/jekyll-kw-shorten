@@ -1,26 +1,26 @@
 # gems
 *.gem
-/Gemfile.lock
+Gemfile.lock
 *.gemfile.lock
-/gems/
+gems/
 
 # local bin folder - binstubs
-/bin/
+bin/
 
 # local gem package folder
-/pkg/
+pkg/
 
 # tests / test coverage
 .jekyll-cache/
-/coverage
+coverage/
 
 # documentation
 rdoc/
 
 # bundler
-/.bundle/
-/vendor/bundle/
-/gemfiles/.bundle/
-/gemfiles/vendor/bundle/
+.bundle/
+vendor/bundle/
+gemfiles/.bundle/
+gemfiles/vendor/bundle/
 
 # unsorted
