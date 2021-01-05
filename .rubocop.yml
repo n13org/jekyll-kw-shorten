@@ -6,8 +6,9 @@ AllCops:
     - vendor/bundle/**/*
     - bin/**/*
     - Rakefile
-    - Gemfile
+    - Gemfile    
     - "*.gemspec"
+    - gemfiles/**/*
   NewCops: enable
 
 Layout/EndOfLine:
