@@ -5,17 +5,19 @@ Gem::Specification.new do |spec|
   spec.version       = Jekyll::KargWare::Shorten::VERSION
   spec.authors       = ['Nicolas Karg', 'n13.org - Open-Source by KargWare']
   spec.email         = ["rubygems.org@n13.org"]
-  spec.homepage      = "https://notes.n13.org/rubygems"
+  spec.homepage      = "https://n13.org/rubygems"
 
-  spec.summary       = %q{A template project for jekyll plugins.}
+  spec.summary       = %q{A jekyll plugin to shorten long numbers}
   spec.description   = <<-LONGDESCRIPTION
-    A template project for jekyll plugins with some additional content
+    A jekyll plugin which can shorten long numbers, e.g. 1000 == 1K or 1000000 == 1M.
+
+    It can be used as [filter](https://jekyllrb.com/docs/plugins/filters/) `{{ 1234 | shorten }}` and as [tag](https://jekyllrb.com/docs/plugins/tags/) `{% shorten 1234 %}`, the result will be **1.2 K**
   LONGDESCRIPTION
 
   spec.metadata      = {
     'homepage_uri'    => spec.homepage,
-    'bug_tracker_uri' => 'https://github.com/n13org/jekyll-plugin-template/issues',
-    'source_code_uri' => 'https://github.com/n13org/jekyll-plugin-template'
+    'bug_tracker_uri' => 'https://github.com/n13org/jekyll-kw-shorten/issues',
+    'source_code_uri' => 'https://github.com/n13org/jekyll-kw-shorten'
   }
 
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
