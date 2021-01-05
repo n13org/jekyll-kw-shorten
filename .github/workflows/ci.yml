@@ -11,6 +11,16 @@ on:
     tags-ignore:
       - "*"
 jobs:  
+  pre-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate appraisal files
+        run: bundle exec appraisal generate
+      - uses: actions/upload-artifact@v2
+        with:
+          name: appraisal-files
+          path: gemfiles/
+          if-no-files-found: error
   build:
     strategy:
       matrix:
