@@ -37,5 +37,6 @@ gem "rubocop-performance", "~> 1.9"
 group :development do
   gem 'debase'
   gem 'ruby-debug-ide'
-  # other development gems...
+  
+  gem "appraisal", "~> 2.3"
 end
