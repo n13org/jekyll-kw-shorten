@@ -35,11 +35,11 @@ module Jekyll
 
       # shorten filter {{ number | shorten }} for Jekyll
       module ShortenFilter
-        def shorten(number)
+        def shorten(input)
           parser = Jekyll::KargWare::Shorten::Parser.new(
             Jekyll::KargWare::Shorten.get_plugin_config(@context)
           )
-          parser.parse(number)
+          parser.parse(input)
         end
       end
     end

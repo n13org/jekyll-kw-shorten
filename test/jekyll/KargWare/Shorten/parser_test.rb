@@ -50,7 +50,7 @@ module Jekyll
 
           assert_equal 'Hallo', parser.parse('Hallo')
           assert_equal 'Foo Bar', parser.parse('Foo Bar')
-          assert_equal 'Foo 42 Bar', parser.parse('Foo 42 Bar')
+          assert_equal '   42', parser.parse('Foo 42 Bar')
         end
 
         def test_parse_number_strings
