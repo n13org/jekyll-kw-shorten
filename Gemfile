@@ -3,7 +3,9 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in jekyll-KargWare-Shorten.gemspec
 gemspec
 
-gem "rake", "~> 13.0"
+group :ci do
+  gem "appraisal", "~> 2.3"
+end
 
 group :test_legacy do
   gem "minitest", "~> 5.0"
@@ -31,6 +33,8 @@ group :test do
 end
 
 group :development do
+  gem "rake", "~> 13.0"
+
   gem 'debase'
   gem 'ruby-debug-ide'
 
@@ -39,6 +43,4 @@ group :development do
   gem "rubocop-performance", "~> 1.9"
   gem "rubocop-rake"
   gem "rubocop-rspec"
-  
-  gem "appraisal", "~> 2.3"
 end
