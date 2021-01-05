@@ -23,6 +23,10 @@ require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "#{name} #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+  rdoc.options << '--charset' << 'utf-8'
+  # rdoc.template = ""
+  rdoc.rdoc_files.include(
+    'README*',
+    'lib/**/*.rb'
+  )
 end
