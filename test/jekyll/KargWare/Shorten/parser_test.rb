@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'liquid/utils'
+
 require 'test_helper'
 require 'jekyll/KargWare/Shorten/parser'
 
@@ -7,6 +9,12 @@ module Jekyll
   module KargWare
     module Shorten
       class ParserTest < Minitest::Test
+        def test_liquid_utils_is_number
+          assert_equal 123, Liquid::Utils.to_number('123')
+          assert_equal 123.45, Liquid::Utils.to_number('123.45')
+          assert_equal 0, Liquid::Utils.to_number('FooBar')
+          assert_equal 0, Liquid::Utils.to_number('Foo42Bar')
+        end
         def test_is_number_positive
           assert_equal true, Parser.number?(1.23)
           assert_equal true, Parser.number?(123)
