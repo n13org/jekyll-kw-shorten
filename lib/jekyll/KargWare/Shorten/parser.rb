@@ -23,6 +23,10 @@ module Jekyll
 
           return '∞ 🚀' if num >= 1000000000000
 
+          shorten(num)
+        end
+
+        private def shorten(num)
           if num >= 1000000000
             format(num / 1000000000.0) + @config.shorten_gt9_digit
           elsif num >= 1000000
