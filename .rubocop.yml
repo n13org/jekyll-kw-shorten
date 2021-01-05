@@ -30,7 +30,7 @@ Metrics/AbcSize:
 Metrics/ClassLength:
   Enabled: false
 Metrics/BlockLength:
-  ExcludedMethods: ['describe', 'context']
+  IgnoredMethods: ['describe', 'context']
 
 Naming/FileName:
   Enabled: false
