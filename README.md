@@ -1,3 +1,4 @@
+# jekyll-kw-shorten
 
 The project `jekyll-kw-shorten` is a plug-in for a [jekyll](https://jekyllrb.com/) static page blog.
 
