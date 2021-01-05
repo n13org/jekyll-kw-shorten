@@ -55,8 +55,10 @@ The plug-in supports
 | {{ 1000000000 \| shorten }}      | ✔️ | 1.0 B    |
 | {{ 1000000000000 \| shorten }}   | ✔️ | ∞ 🚀     |
 
-**HINT**:
-The filter `{{ MyText | shorten }}` will show nothing (empty string). The filter "thinks" the MyText is a variable (with the value nil). Numbers can be used with and without quotes. Text must be wrapped in quotes.
+**HINTS**:  
+
+* The filter `{{ MyText | shorten }}` will show nothing (empty string). The filter "thinks" the MyText is a variable (with the value nil). Numbers can be used with and without quotes. Text must be wrapped in quotes.
+* The filter `{{ - 44 | shorten }}` will show nothing (empty string). The filter tries to parse the `-` as first part, not the number behind.
 
 ## Installation
 
