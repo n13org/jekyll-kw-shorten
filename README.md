@@ -1,5 +1,14 @@
 # jekyll-kw-shorten
 
+![CI](https://github.com/n13org/jekyll-kw-shorten/workflows/CI/badge.svg)
+![Coverage](https://github.com/n13org/jekyll-kw-shorten/workflows/Coverage/badge.svg)
+![RuboCop](https://github.com/n13org/jekyll-kw-shorten/workflows/RuboCop/badge.svg)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/efd40b09af4719e928bb/maintainability)](https://codeclimate.com/github/n13org/jekyll-kw-shorten/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/efd40b09af4719e928bb/test_coverage)](https://codeclimate.com/github/n13org/jekyll-kw-shorten/test_coverage)
+
+[![Gem Version](https://badge.fury.io/rb/jekyll-kw-shorten.svg)](https://badge.fury.io/rb/jekyll-kw-shorten)
+
 A jekyll plugin which can shorten long numbers, e.g. 1000 ➜ 1K or 1000000 ➜ 1M.
 
 The project `jekyll-kw-shorten` is a plug-in for a [jekyll](https://jekyllrb.com/) static page blog. It can be used as **[filter](https://jekyllrb.com/docs/plugins/filters/)** and as **[tag](https://jekyllrb.com/docs/plugins/tag/)**.
