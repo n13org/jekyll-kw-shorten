@@ -21,6 +21,7 @@ jobs:
           name: appraisal-files
           path: gemfiles/
           if-no-files-found: error
+          retention-days: 1
   build:
     strategy:
       matrix:
