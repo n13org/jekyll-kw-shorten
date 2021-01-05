@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'liquid/utils'
-
 require 'test_helper'
 require 'jekyll/KargWare/Shorten/parser'
 
@@ -9,12 +7,29 @@ module Jekyll
   module KargWare
     module Shorten
       class ParserTest < Minitest::Test
-        def test_liquid_utils_is_number
-          assert_equal 123, Liquid::Utils.to_number('123')
-          assert_equal 123.45, Liquid::Utils.to_number('123.45')
-          assert_equal 0, Liquid::Utils.to_number('FooBar')
-          assert_equal 0, Liquid::Utils.to_number('Foo42Bar')
+        def test_only_numbers
+          assert_equal 123, Parser.only_float_numbers('123')
+          assert_equal 123, Parser.only_float_numbers(' 123')
+          assert_equal 123, Parser.only_float_numbers('123 ')
+          assert_equal 123, Parser.only_float_numbers(' 123 ')
+          assert_equal 123.45, Parser.only_float_numbers('123.45')
+          assert_equal 'FooBar', Parser.only_float_numbers('FooBar')
+          assert_equal 42, Parser.only_float_numbers('Foo42Bar')
+          assert_equal 42.3, Parser.only_float_numbers('Foo42.3Bar')
+          assert_equal 42.35, Parser.only_float_numbers('Foo42.35Bar')
+          assert_equal 42.35, Parser.only_float_numbers('Foo42.35.7Bar')
+          assert_equal 21.37, Parser.only_float_numbers('Foo21.37abc9.4Bar')
+          assert_equal 21.37, Parser.only_float_numbers('Foo 21.37 abc 9.4Bar')
+          assert_equal 21.0, Parser.only_float_numbers('Foo 21. 37 abc 9.4Bar')
+          assert_equal 21, Parser.only_float_numbers('Foo 21 37 abc 9.4Bar')
+          assert_equal(-321, Parser.only_float_numbers(-321))
+          assert_equal(-321, Parser.only_float_numbers('-321'))
+          assert_equal(-456, Parser.only_float_numbers(- 456))
+          assert_equal(-456.8, Parser.only_float_numbers(- 456.8))
+          assert_equal(-456.5, Parser.only_float_numbers('-456.5abc'))
+          assert_equal(0, Parser.only_float_numbers('- 456'))
         end
+
         def test_is_number_positive
           assert_equal true, Parser.number?(1.23)
           assert_equal true, Parser.number?(123)

@@ -7,6 +7,9 @@ module Jekyll
     module Shorten
       # jekyll-kw-shorten parser class
       class Parser
+        # https://stackoverflow.com/questions/33952093/how-to-allow-only-one-dot-in-regex
+        DIGITS_AND_SINGLE_DOT_ESCAPE_REGEXP = /(-?\s?[0-9]+(\.[0-9]+)?)/.freeze
+
         attr_reader :configuration
 
         def initialize(options = {})
@@ -45,6 +48,12 @@ module Jekyll
           true if Float(string)
         rescue StandardError
           false
+        end
+
+        def self.only_float_numbers(input)
+          input.to_s.scan(DIGITS_AND_SINGLE_DOT_ESCAPE_REGEXP).first.first.to_f
+        rescue StandardError
+          input
         end
       end
     end
