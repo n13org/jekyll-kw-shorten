@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.description   = <<-LONGDESCRIPTION
     A jekyll plugin which can shorten long numbers, e.g. 1000 == 1K or 1000000 == 1M.
 
-    It can be used as [filter](https://jekyllrb.com/docs/plugins/filters/) `{{ 1234 | shorten }}` and as [tag](https://jekyllrb.com/docs/plugins/tags/) `{% shorten 1234 %}`, the result will be **1.2 K**
+    It can be used as filter `{{ 1234 | shorten }}` and as tag `{% shorten 1234 %}`, the result will be **1.2 K**
   LONGDESCRIPTION
 
   spec.metadata      = {

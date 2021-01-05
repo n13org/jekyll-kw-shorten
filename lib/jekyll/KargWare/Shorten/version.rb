@@ -4,7 +4,7 @@ module Jekyll
   module KargWare
     module Shorten
       RUBYGEM_NAME = 'jekyll-kw-shorten'
-      VERSION = '0.1.0'
+      VERSION = '0.1.1'
     end
   end
 end
