@@ -11,6 +11,8 @@ AllCops:
     - gemfiles/**/*
   NewCops: enable
 
+Layout/EmptyLineBetweenDefs:
+  Enabled: false
 Layout/EndOfLine:
   Enabled: false
 Layout/LineLength:

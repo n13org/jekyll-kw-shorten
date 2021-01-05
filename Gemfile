@@ -30,13 +30,15 @@ group :test do
   # gem "jruby-openssl" if RUBY_ENGINE == "jruby"
 end
 
-gem "rubocop", "~> 1.3"
-gem "rubocop-minitest", "~> 0.10.1"
-gem "rubocop-performance", "~> 1.9"
-
 group :development do
   gem 'debase'
   gem 'ruby-debug-ide'
+
+  gem "rubocop", "~> 1.7.0"
+  gem "rubocop-minitest", "~> 0.10.1"
+  gem "rubocop-performance", "~> 1.9"
+  gem "rubocop-rake"
+  gem "rubocop-rspec"
   
   gem "appraisal", "~> 2.3"
 end
