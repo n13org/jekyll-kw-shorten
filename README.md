@@ -1,8 +1,8 @@
 # jekyll-kw-shorten
 
-The project `jekyll-kw-shorten` is a plug-in for a [jekyll](https://jekyllrb.com/) static page blog.
+A jekyll plugin which can shorten long numbers, e.g. 1000 ➜ 1K or 1000000 ➜ 1M.
 
-It can be used as **[filter](https://jekyllrb.com/docs/plugins/filters/)** and as **[tag](https://jekyllrb.com/docs/plugins/tag/)**.
+The project `jekyll-kw-shorten` is a plug-in for a [jekyll](https://jekyllrb.com/) static page blog. It can be used as **[filter](https://jekyllrb.com/docs/plugins/filters/)** and as **[tag](https://jekyllrb.com/docs/plugins/tag/)**.
 
 It is published on [rubygems.org](https://rubygems.org/gems/jekyll-kw-shorten), the source code is hosted on [GitHub](https://github.com/n13org/jekyll-kw-shorten).
 
