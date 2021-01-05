@@ -17,13 +17,11 @@ module Jekyll
         end
 
         def parse(text)
-          return text unless Parser.number?(text)
+          num = Parser.only_float_numbers(text)
 
-          # return text unless Parser.only_float_numbers(text) == text
+          return text unless Parser.number?(num)
 
           begin
-            # num = text.to_f
-            num = Parser.only_float_numbers(text)
             if num >= 1000000000000
               '∞ 🚀'
             elsif num >= 1000000000
@@ -48,9 +46,8 @@ module Jekyll
         end
 
         def self.number?(string)
-          # true if Float(string)
-          true if Float(Parser.only_float_numbers(string))
-          # true if Parser.only_float_numbers(string) != string
+          true if Float(string)
+          # true if Float(Parser.only_float_numbers(string))
         rescue StandardError
           false
         end
