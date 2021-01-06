@@ -22,7 +22,7 @@ jobs:
       - name: bundle install
         run: |
           gem install bundler
-          bundle config set with ci
+          bundle config set --local with ci
           bundle install --jobs 4 --retry 3
       - name: Generate appraisal files
         run: bundle exec appraisal generate
