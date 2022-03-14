@@ -39,7 +39,7 @@ group :development do
   gem 'ruby-debug-ide'
 
   gem "rubocop", "~> 1.7.0"
-  gem "rubocop-minitest", "~> 0.10.1"
+  gem "rubocop-minitest", "~> 0.18.0"
   gem "rubocop-performance", "~> 1.9"
   gem "rubocop-rake"
   gem "rubocop-rspec"
