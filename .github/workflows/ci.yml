@@ -26,7 +26,7 @@ jobs:
           bundle install --jobs 4 --retry 3
       - name: Generate appraisal files
         run: bundle exec appraisal generate
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: appraisal-files
           path: gemfiles/
