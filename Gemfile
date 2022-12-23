@@ -12,7 +12,7 @@ group :test_legacy do
   gem "minitest-debugger"
   gem "minitest-reporters"
   gem "minitest-profile"
-  gem 'simplecov', '~> 0.21.1'
+  gem 'simplecov', '~> 0.22.0'
 end
 
 group :test do
